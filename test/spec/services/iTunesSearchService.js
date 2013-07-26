@@ -18,12 +18,15 @@ describe('Service: iTunesSearchService', function () {
   it('should build the search URL correctly', function(iTunesSearchService){
 
     var searchText = 'Rob Zombie';
+    var expectedUrl = iTunesSearchService.SEARCH_URL + '?term=' + searchText;
+
+    iTunesSearchService.searchText = searchText;
+    expect(iTunesSearchService.buildSearchUrl()).toBe(expectedUrl);
 
     //
-    // Okay, based on the service implementation, how do I test that it's creating a valid URL?
-    // I don't want to have to use the $httpBackend just to verify the URL...
+    // Now - go run the tests and see what happens:
+    // $ grunt test
     //
-
 
   });
 
