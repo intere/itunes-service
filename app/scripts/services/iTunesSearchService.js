@@ -60,7 +60,17 @@ angular.module('itunesServiceApp')
 		// Adding a method that builds the URL for you, now we can test it in isolation!
 		//
 		buildSearchUrl: function() {
-			var url = SEARCH_URL
+
+			//
+			// WHOA - Unit tests showed us that we have issues:
+			//   TypeError: Cannot read property 'SEARCH_URL' of undefined
+	    	// 		at null.<anonymous> (/Users/einternicola/code/itunes-service/test/spec/services/iTunesSearchService.js:21:42)
+			//
+
+			//
+			// 
+			//
+			var url = this.SEARCH_URL
 				+ '?term=' + this.searchText
 				+ (this.searchType ? '&attribute=' + this.searchType : "")
 				+ (this.resultType ? '&entity=' + this.resultType : "")

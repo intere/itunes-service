@@ -15,10 +15,13 @@ describe('Service: iTunesSearchService', function () {
     expect(!!iTunesSearchService).toBe(true);
   });
 
-  it('should build the search URL correctly', function(iTunesSearchService){
+  //
+  // Bug 1:  We forgot to "inject" the service into the test - now fixed
+  //
+  it('should build the search URL correctly', inject(function(iTunesSearchService){
 
     var searchText = 'Rob Zombie';
-    var expectedUrl = iTunesSearchService.SEARCH_URL + '?term=' + searchText;
+    var expectedUrl = iTunesSearchService.SEARCH_URL + '?term=' + searchText + "&callback=JSON_CALLBACK";
 
     iTunesSearchService.searchText = searchText;
     expect(iTunesSearchService.buildSearchUrl()).toBe(expectedUrl);
@@ -28,6 +31,6 @@ describe('Service: iTunesSearchService', function () {
     // $ grunt test
     //
 
-  });
+  }));
 
 });
